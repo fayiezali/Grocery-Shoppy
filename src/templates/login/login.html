@@ -1,0 +1,58 @@
+<h1> login <h1>
+    {% extends "dashboard/base.html" %}  
+    {% load static %}
+    
+    
+    <!---  PAGE_TITLE  ----------------------------- -->
+    {% block    PAGE_TITLE  %} 
+    {% comment %} <h5> Put Page Name <h5> {% endcomment %}
+    {% endblock PAGE_TITLE  %}  
+    
+    
+    <!---  MESSAGES_CONTENTS  ---------------------- -->
+    {% block    MESSAGES_CONTENTS  %}
+    {% comment %} <H5> Put Message Here <h5> {% endcomment %}
+    {% endblock MESSAGES_CONTENTS  %}  
+    
+    <!---  CONTENTS_PAGE --------------------------- -->
+    {% block    CONTENTS_PAGE %} 
+        {% comment %} {% block title %} Login {% endblock %} {% endcomment %}
+    
+    {% comment %} {% block css %} {% endcomment %}
+    {% comment %} {% endblock %} {% endcomment %}
+    {% comment %} {% block body %} {% endcomment %}
+    <form method="POST">
+        {% csrf_token %}
+        <div class="container mt-5">
+            <div class="mb-3">
+                <label for="username" class="form-label"><i style="font-weight: bold;">Username</i></label>
+                <input type="text" class="form-control" id="username" name="username" placeholder="Enter Username">
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label"><i style="font-weight: bold;">Password</i></label>
+                <input type="password" class="form-control" id="password" name="password" placeholder="Enter Password">
+            </div>
+            <br>
+            <input type="submit" value="Submit" class="btn" style="background-color: #8c5d4f; color: white; font-size: larger; width: 8rem;">
+    
+        </div>
+    </form>
+    {% comment %} {% endblock %} {% endcomment %}
+    
+    {% comment %} {% block js %} {% endcomment %}
+    <script>
+    {% if alert %}
+    alert("Username or Password is incorrect.");
+    document.location = "/login"
+    {% endif %}
+    </script>
+    {% comment %} {% endblock %} {% endcomment %}
+    
+    
+{% endblock CONTENTS_PAGE %} 
+
+
+
+<!---  PAGINATION --------------------------- -->
+{% block    PAGINATION %} 
+{% endblock PAGINATION %} 
