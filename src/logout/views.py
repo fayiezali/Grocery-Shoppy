@@ -6,6 +6,6 @@ from django.contrib import messages
 def Logout_DEF(request):
     logout(request)
     # Send Message
-    messages.success(request , "Logged out successfully.")
+    messages.info(request    , "Logged out successfully.")
     # Go To The Home Page
     return redirect('dashboard-URL')
