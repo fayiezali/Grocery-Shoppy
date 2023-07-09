@@ -15,7 +15,7 @@
 			<!-- header-bot-->
 			<div class="col-md-4 logo_agile">
 				<h1>
-					<a href="index.html">
+					<a href="{% url 'dashboard-URL' %}">
 						<span>G</span>rocery
 						<span>S</span>hoppy
 						<img src="{% static 'images/logo2.png' %}" alt=" ">
@@ -40,7 +40,7 @@
 					<li>
 						{% comment %} <a href="#" data-toggle="modal" data-target="#myModal1">
 							<span class="fa fa-unlock-alt" aria-hidden="true"></span> Sign In </a> {% endcomment %}
-						<a href="{% url 'login'  %}" >
+						<a href="{% url 'login-URL'  %}" >
 							<span class="fa fa-unlock-alt" aria-hidden="true"></span> Sign In </a>
 	
 					</li>

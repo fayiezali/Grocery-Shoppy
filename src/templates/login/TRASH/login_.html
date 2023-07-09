@@ -1,0 +1,120 @@
+<h1> login <h1>
+    {% extends "dashboard/base.html" %}  
+    {% load static %}
+    
+    
+    <!---  PAGE_TITLE  ----------------------------- -->
+    {% block    PAGE_TITLE  %} 
+    <h5> Sign In  <h5>
+    {% endblock PAGE_TITLE  %}  
+    
+    
+    <!---  MESSAGES_CONTENTS  ---------------------- -->
+    {% block    MESSAGES_CONTENTS  %}
+    {% comment %} <H5> Put Message Here <h5> {% endcomment %}
+    {% endblock MESSAGES_CONTENTS  %}  
+    
+
+    
+    <!---  CONTENTS_PAGE --------------------------- -->
+    {% block    CONTENTS_PAGE %} 
+    
+    <div class="container py-5 h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+          <div class="card shadow-2-strong" style="border-radius: 1rem;">
+            <div class="card-body p-5 text-center">
+  
+    {% comment %} <div class="row justify-content-center">
+
+        <div class="container mt-5">
+          <div class="col-lg-3"> {% endcomment %}
+
+    <form method="POST">
+        {% csrf_token %}
+
+            <div class="mb-3">
+                <label for="username" class="form-label"><i style="font-weight: bold;">Username</i></label>
+                <input type="text" class="form-control" id="username" name="username" placeholder="Enter Username">
+            </div>
+
+            <div class="mb-3">
+                <label for="password" class="form-label"><i style="font-weight: bold;">Password</i></label>
+                <input type="password" class="form-control" id="password" name="password" placeholder="Enter Password">
+            </div>
+
+            <br>
+            <input type="submit" value="Submit" class="btn" style="background-color: #8c5d4f; color: white; font-size: larger; width: 8rem;">
+    
+    </form>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+
+
+          <div class="container py-5 h-100">
+                  {% comment %} <div class="row g-0"> {% endcomment %}
+                    <div class="col-lg-3">
+                      {% comment %} <div class="card-body p-md-5 mx-md-4"> {% endcomment %}
+        
+                        <div class="text-center">
+                          <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/lotus.webp"
+                            style="width: 185px;" alt="logo">
+                          <h4 class="mt-1 mb-5 pb-1">We are The Lotus Team</h4>
+                        </div>
+        
+                        <form method="POST">
+                          {% csrf_token %}
+                          <p>Please login to your account</p>
+        
+                          <div class="form-outline mb-0">
+                            {% comment %} <input type="email" id="username" name="username" class="form-control"
+                              placeholder="Phone number or email address" /> {% endcomment %}
+                              <input type="text" class="form-control" id="username" name="username" placeholder="Enter Username">
+                              <label class="form-label" for="username">Username</label>
+                          </div>
+        
+                          <div class="form-outline mb-0">
+                            {% comment %} <input type="password" id="password" name="password" class="form-control" /> {% endcomment %}
+                            <input type="password" class="form-control" id="password" name="password" placeholder="Enter Password">
+                            <label class="form-label" for="password">Password</label>
+                          </div>
+        
+                          <div class="text-center pt-1 mb-5 pb-1">
+                            {% comment %} <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" type="button">Log in</button> {% endcomment %}
+                            <input type="submit" value="Submit" class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" >
+                            <a class="text-muted" href="#!">Forgot password?</a>
+                          </div>
+        
+                          <div class="d-flex align-items-center justify-content-center pb-4">
+                            <p class="mb-0 me-2">Don't have an account?</p>
+                            <button type="button" class="btn btn-outline-danger">Create new</button>
+                          </div>
+        
+                        </form>
+        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+{% endblock CONTENTS_PAGE %} 
+
+
+
+<!---  PAGINATION --------------------------- -->
+{% block    PAGINATION %} 
+{% endblock PAGINATION %} 

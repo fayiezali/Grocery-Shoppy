@@ -13,9 +13,11 @@
 	<div class="header-bot">
 		<div class="header-bot_inner_wthreeinfo_header_mid">
 			<!-- header-bot-->
+			<h4> Welcome: ( {{user.username}} )</h4>
+
 			<div class="col-md-4 logo_agile">
 				<h1>
-					<a href="index.html">
+					<a href="{% url 'dashboard-URL' %}">
 						<span>G</span>rocery
 						<span>S</span>hoppy
 						<img src="{% static 'images/logo2.png' %}" alt=" ">
