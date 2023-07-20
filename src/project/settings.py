@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'dashboard',
     'logout',
     'login',
+    'signup',
 ]
 
 MIDDLEWARE = [

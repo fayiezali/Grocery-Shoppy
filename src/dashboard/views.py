@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 # The Condition For Seeing The Required Page Login
 # @login_required(login_url="login/")
 # View the dashboard Page
-def dashboard(request):
+def dashboard_DEF(request):
     # Put the data to be displayed on the page in context
     context={}
     return render(request,'dashboard/index.html', context)

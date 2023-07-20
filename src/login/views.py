@@ -2,39 +2,32 @@ from django.shortcuts import render , redirect
 from django.contrib import messages
 from django.contrib.auth import login, authenticate 
 
-
-
-# Display Login Web Page
-# def login_page_DEF(request):
-#     return render(request,'login_logout/login.html', {})
-
-
-def Login(request):
+# Login To Applcation
+def Login_DEF(request):
     if request.user.is_authenticated:
         return redirect("/")
     else:
-        if request.method == "POST":
-            username = request.POST['username']
-            password = request.POST['password']
+        # Verify the validity of the entered data
+        if request.method == "POST" and  'button_login' in request.POST:
+            username = request.POST['username'] # User Name 
+            password = request.POST['password'] # Passwerd
             remember = request.POST.get('remember_me')
             user = authenticate(username=username, password=password)
-
+            # Verify that the requested user exists
             if user is not None:
+                # Check Selected/unselected Remember Me key
                 if remember is None:
                     request.session.set_expiry(0)  # <-- Here if the remember me is False, that is why expiry is set to 0 seconds. So it will automatically close the session after the browser is closed.
                     messages.info(request    , "Session Expiry.")
-                login(request, user)
+                login(request, user) # Login To Applcation
+                # Display a message to the user
                 messages.success(request, f'Welcome: ( {username} )')
+                # Go To Home Page
                 return redirect("/")
-                # if 'remember_me' not in request.POST:
-                #     request.session.set_expiry(0)  # <-- Here if the remember me is False, that is why expiry is set to 0 seconds. So it will automatically close the session after the browser is closed.
-                #     messages.info(request    , "Session Expiry.")
-                # login(request, user)
-                # messages.success(request, f'Welcome: ( {username} )')
-                # return redirect("/")
             else:
+                # Display a message to the user
                 messages.error(request   , "User Name or Password Is Incorrect.") 
+                # Display the login screen
                 return render(request, "login/login.html")
-                # alert = True
-                # return render(request, "login/login.html", {"alert":alert})
+    # Display the login screen
     return render(request, "login/login.html")

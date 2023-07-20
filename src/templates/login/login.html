@@ -21,7 +21,7 @@
     {% block    CONTENTS_PAGE %} 
 
     <div class="container">    
-        <div id="loginbox" style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">                    
+        <div id="loginbox" style="margin-top:5px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">                    
             <div class="panel panel-info" >
                     <div class="panel-heading">
                         <div class="panel-title">Sign In</div>
@@ -30,6 +30,7 @@
                     <div style="padding-top:30px" class="panel-body" >
                         <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
 
+                        {% comment %} <form  action = "{% url 'login-URL' %}" method="POST" name="login" value="login"> {% endcomment %}
                         <form method="POST" action="{% url 'login-URL' %}" id="loginform" class="form-horizontal" role="form">
 
                         {% comment %} <form method="POST" action="{% url 'login-URL'     %}" > {% endcomment %}
@@ -63,7 +64,8 @@
                                 <div style="margin-top:10px" class="form-group">
                                     <!-- Button -->
                                     <div class="col-sm-12 controls">
-                                    <button type="submit" class="btn btn-success">Login</button>
+                                    <button type="submit" name= "button_login" id="submit" class="btn btn-success" > Login <span class="glyphicon glyphicon-send"></span></button>
+                                    {% comment %} <button type="submit" class="btn btn-success">Login</button> {% endcomment %}
                                     {% comment %} <input  type="submit" value="Submit" class="btn"> {% endcomment %}
                                     {% comment %} <a id="btn-login" href="{% url 'login-URL'     %}" class="btn btn-primary">Login - 01  </a> {% endcomment %}
                                     {% comment %} <a href="{% url 'login-URL'  %}" ><span class="fa fa-unlock-alt" aria-hidden="true"></span> Sign In - 02 </a> {% endcomment %}
@@ -77,7 +79,7 @@
                                     <div class="col-md-12 control">
                                         <div style="border-top: 1px solid#888; padding-top:15px; font-size:85%" >
                                             Don't have an account! 
-                                        <a href="#" onClick="$('#loginbox').hide(); $('#signupbox').show()">
+                                        <a href="{% url 'signup-URL' %}">
                                             Sign Up Here
                                         </a>
                                         </div>
