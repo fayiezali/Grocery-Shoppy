@@ -131,11 +131,35 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-
+#
+#
 # Custom Messages 
 from django.contrib.messages import constants as messages
 MESSAGE_TAGS = {
     messages.ERROR: "danger",
 }
+#
+#
+#
+AUTHENTICATION_BACKENDS = ['django.contrib.auth.backends.AllowAllUsersModelBackend']
+LOGIN_REDIRECT_URL = 'dashboard-URL' # Go To Home Page HTML
+LOGOUT_REDIRECT_URL = 'logout_done-URL' # Go To LogoutDone.html Page HTML
+LOGIN_ERROR_URL = 'login-URL'
 
+
+#Call Class Sign  In with Email
+# AUTHENTICATION_BACKENDS = ['accounts.backends.EmailBackend']
+
+EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
+EMAIL_FILE_PATH = str(BASE_DIR.joinpath('sent_emails'))
+
+# Email Settings
+from signup.email_info import EMAIL_BACKEND , EMAIL_HOST , EMAIL_HOST_USER , EMAIL_HOST_PASSWORD , EMAIL_PORT ,  EMAIL_USE_TLS , PASSWORD_RESET_TIMEOUT_DAYS
+EMAIL_BACKEND = EMAIL_BACKEND
+EMAIL_HOST = EMAIL_HOST # mail service smtp
+EMAIL_HOST_USER = EMAIL_HOST_USER# email id
+EMAIL_HOST_PASSWORD = EMAIL_HOST_PASSWORD # password
+EMAIL_PORT = EMAIL_PORT
+EMAIL_USE_TLS = EMAIL_USE_TLS
+PASSWORD_RESET_TIMEOUT_DAYS = PASSWORD_RESET_TIMEOUT_DAYS
+#
