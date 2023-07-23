@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'logout',
     'login',
     'signup',
+    'password_change',
 ]
 
 MIDDLEWARE = [
@@ -142,9 +143,6 @@ MESSAGE_TAGS = {
 #
 #
 AUTHENTICATION_BACKENDS = ['django.contrib.auth.backends.AllowAllUsersModelBackend']
-LOGIN_REDIRECT_URL = 'dashboard-URL' # Go To Home Page HTML
-LOGOUT_REDIRECT_URL = 'logout_done-URL' # Go To LogoutDone.html Page HTML
-LOGIN_ERROR_URL = 'login-URL'
 
 
 #Call Class Sign  In with Email
