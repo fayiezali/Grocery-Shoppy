@@ -43,6 +43,10 @@ INSTALLED_APPS = [
     'login',
     'signup',
     'password_change',
+    'password_reset',
+    'crispy_forms', 
+    'widget_tweaks',
+    # 'accounts',
 ]
 
 MIDDLEWARE = [
