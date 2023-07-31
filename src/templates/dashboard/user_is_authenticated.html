@@ -43,11 +43,25 @@
 						<a href="{% url 'password_change-URL' %}">
 							<span class="fa fa-unlock-alt" aria-hidden="true"></span> Change Password </a>
 					</li> 
-					{% comment %} <li>
-						<a href="#" data-toggle="modal" data-target="#myModal2">
-							<span class="fa fa-pencil-square-o" aria-hidden="true"></span> Sign Up </a>
-					</li> {% endcomment %}
-					<li class="nav-item">
+
+					<li>
+						<a href="{% url 'cart' %}" data-toggle="modal" data-target="#myModal2">
+							<span class="fa fa-pencil-square-o" aria-hidden="true"></span> Char </a>
+					</li> 
+
+					<li>
+						{% comment %} <a href="{% url 'product_view'  %}"> {% endcomment %}
+							<span class="fa fa-pencil-square-o" aria-hidden="true"></span> Product Details </a>
+					</li> 	
+
+					<li>
+						<a href="{% url 'index' %}">
+							<span class="fa fa-pencil-square-o" aria-hidden="true"></span> Product All - index </a>
+					</li> 	
+
+					<li>
+						{% comment %} class="nav-item"> {% endcomment %}
+						<a href="{% url 'logout-URL'  %}">
                         <a class="nav-link active" aria-current="page" href="/logout/">Logout</a>
                     </li>
 

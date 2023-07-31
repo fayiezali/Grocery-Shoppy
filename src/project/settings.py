@@ -46,7 +46,8 @@ INSTALLED_APPS = [
     'password_reset',
     'crispy_forms', 
     'widget_tweaks',
-    # 'accounts',
+    'orders',
+    'shop',
 ]
 
 MIDDLEWARE = [
@@ -156,7 +157,7 @@ EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
 EMAIL_FILE_PATH = str(BASE_DIR.joinpath('sent_emails'))
 
 # Email Settings
-from signup.email_info import EMAIL_BACKEND , EMAIL_HOST , EMAIL_HOST_USER , EMAIL_HOST_PASSWORD , EMAIL_PORT ,  EMAIL_USE_TLS , PASSWORD_RESET_TIMEOUT_DAYS
+from email_data_info.email_info import EMAIL_BACKEND , EMAIL_HOST , EMAIL_HOST_USER , EMAIL_HOST_PASSWORD , EMAIL_PORT ,  EMAIL_USE_TLS , PASSWORD_RESET_TIMEOUT_DAYS
 EMAIL_BACKEND = EMAIL_BACKEND
 EMAIL_HOST = EMAIL_HOST # mail service smtp
 EMAIL_HOST_USER = EMAIL_HOST_USER# email id
