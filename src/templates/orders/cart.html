@@ -1,0 +1,59 @@
+{% extends "dashboard/base.html" %}  
+{% load static %}
+
+
+<!---  PAGE_TITLE  ----------------------------- -->
+{% block    PAGE_TITLE  %} 
+<h5> index - dashboard <h5>
+{% endblock PAGE_TITLE  %}  
+
+
+<!---  MESSAGES_CONTENTS  ---------------------- -->
+{% block    MESSAGES_CONTENTS  %}
+
+	<!---  Show The Alert Message  ----------------------------- -->
+	{% include 'aler_messages/alert_message.html'%}
+
+{% endblock MESSAGES_CONTENTS  %}  
+
+<!---  CONTENTS_PAGE --------------------------- -->
+{% block    CONTENTS_PAGE %} 
+
+{% comment %} <div class="my-form container p-2 my-2 rounded border border-warning"> {% endcomment %}
+<h2 class="text-center"> Cart </h2>
+<hr>
+
+{% if order_VAR %}
+    <h5>
+                First Name: {{ request.user.first_name }}
+                <hr>
+                First Name: {{ order_VAR.first_name }}
+                <hr>
+                First Name: {{ request.user.last_name }}
+                <hr>
+                Last Name:  {{ order_VAR.user.last_name }}
+                <hr>
+                Order Number: {{ order_VAR.id }}
+                <hr>
+                Order Total:  {{ total_VAR}}
+    
+</h5>
+    {% else%}
+
+<h5 class="alert alert-warning">
+
+    No Orders Here
+</h5>
+{% endif %}
+
+<hr>
+{% comment %} </div> {% endcomment %}
+
+
+{% endblock CONTENTS_PAGE %} 
+
+
+
+<!---  PAGINATION --------------------------- -->
+{% block    PAGINATION %} 
+{% endblock PAGINATION %} 

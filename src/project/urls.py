@@ -28,6 +28,7 @@ urlpatterns = [
     path('', include('signup.urls')), 
     path('', include('password_change.urls')), 
     path('', include('password_reset.urls')), 
-    path('', include('shop.urls')),
+    path('', include('orders.urls')), 
+    # path('', include('shop.urls')),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
