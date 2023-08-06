@@ -4,8 +4,9 @@ from django.contrib.auth import login, authenticate
 
 # Login To Applcation
 def Login_DEF(request):
+    # attempts to prevent the user from accessing a view that requires authentication.
     if request.user.is_authenticated:
-        return redirect("/")
+        return redirect("/") # Go To Home/index Page
     else:
         # Verify the validity of the entered data
         if request.method == "POST" and  'button_login' in request.POST:
