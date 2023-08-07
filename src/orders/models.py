@@ -45,7 +45,7 @@ class OrderDetailsMODEL(models.Model):
     OrderDetails_price    = models.DecimalField(max_digits=10,decimal_places=2)
     OrderDetails_quantity = models.IntegerField()
     class Meta:
-        # ordering = ('-order_order_date',)
+        ordering = ('-OrderDetails_order',)
         verbose_name = "Order Detail"
         verbose_name_plural = "Order Details" 
 
