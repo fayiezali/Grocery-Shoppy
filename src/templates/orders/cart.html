@@ -4,7 +4,7 @@
 
 <!---  PAGE_TITLE  ----------------------------- -->
 {% block    PAGE_TITLE  %} 
-<h5> <h5>
+<h2 class="text-center"> Cart </h2>
 {% endblock PAGE_TITLE  %}  
 
 
@@ -19,17 +19,26 @@
 <!---  CONTENTS_PAGE --------------------------- -->
 {% block    CONTENTS_PAGE %} 
 
-{% comment %} <div class="my-form container p-2 my-2 rounded border border-warning"> {% endcomment %}
-<h2 class="text-center"> Cart </h2>
-<hr>
-
+{% comment %} Check for an order {% endcomment %}
 {% if order_VAR %}
-<h5>
-                <hr>
-                Order Number: {{ order_VAR.id }}
-                <hr>
-                Order Total:  {{ total_VAR}}
-</h5> 
+
+	<div class="checkout">
+		<div class="container">
+			<div class="checkout-right">
+			<table class="timetable_sub">
+
+					{% comment %} Table titles {% endcomment %}
+					<thead>
+						<tr>
+							<th scope="col">No.</th>
+							<th scope="col">Product</th>
+							<th scope="col">Image</th>
+							<th scope="col">Quantity</th>
+							<th scope="col">Price</th>
+							<th scope="col">Subtotal</th>
+							<th scope="col">Control</th>
+						</tr>
+					</thead>
 {% comment %}
 Any field in another table can be accessed from this table, provided they have a relationship
 line.OrderDetails_product.product_image:
@@ -37,202 +46,87 @@ line.OrderDetails_product.product_image:
 2- Table Product
 3- Field 
 {% endcomment %}
-<table class="table">
-    <thead>
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">Product</th>
-            <th scope="col">Image</th>
-            <th scope="col">Quantity</th>
-            <th scope="col">Price</th>
-            <th scope="col">Subtotal</th>
-            <th scope="col">Control</th>
+{% for line in OrderDetails_VAR %}
 
-        </tr>
-    </thead>
+				<tr class="rem1">
 
+					{% comment %} Auto Numbering {% endcomment %}
+						<td class="invert">{{forloop.counter}}</td>
 
-    <tbody class="table-group-divider">
-        {% for line in OrderDetails_VAR %}
-        <tr>
-            <th scope="row">{{forloop.counter}}</th>
-            <td>{{line.OrderDetails_product}}</td>
-            <td><img class="profile_img" src=" {{ line.OrderDetails_product.product_image.url }}"
-                alt="" width="80" height="80"></td>
-            <td>
-				<a href="{% url 'reduce_quantity_product_in_cart-URL' orderdetails_id=line.id %}" class="btn btn-outline-danger btn-sm"> - </a> 
-				{{line.OrderDetails_quantity}}
-				<a href="{% url 'increase_quantity_product_in_cart-URL' orderdetails_id=line.id %}" class="btn btn-outline-danger btn-sm"> + </a> 
+						{% comment %} Product Name {% endcomment %}
+						<td class="invert">{{line.OrderDetails_product}}</td>
 
-			</td>
-            <td>{{line.OrderDetails_price}}</td>
-            {% comment %} {% widthratio line.OrderDetails_quantity 1 line.OrderDetails_price %} - هنا إجراء عملية الضرب
-			{% widthratio line.OrderDetails_quantity 2 line.OrderDetails_price %} - هنا إجراء عملية القسمة {% endcomment %}
-			<td>{% widthratio line.OrderDetails_quantity 1 line.OrderDetails_price %}</td>
-            <td> <a href="{% url 'remove_from_cart-URL' orderdetails_id=line.id %}" class="btn btn-outline-danger btn-sm"> Remove </a> 	</td>
-		</tr>
-        {% empty %}
-        <h5 class="alert alert-warning">
+						{% comment %} Product Image {% endcomment %}
+						<td 
+						class="invert-image">
+						<a href="single.html">
+							<img class="profile_img"
+							src=" {{ line.OrderDetails_product.product_image.url }}"
+							width="80" height="80" alt=" " class="img-responsive" />
+						</a>
+						</td>
 
-            No Order Details Here
-        </h5>
-        {% endfor %}
-    </tbody>
-</table>
-
-{% comment %} ---------------------------------------- {% endcomment %}
-
-{% comment %}
-
-	<div class="checkout">
-		<div class="container">
-			<h2>Your shopping cart contains: <span>3 Products</span></h2>
-			<div class="checkout-right">
-				<table class="timetable_sub">
-					<thead>
-						<tr>
-							<th>SL No.</th>	
-							<th>Product</th>
-							<th>Quality</th>
-							<th>Product Name</th>
-						
-							<th>Price</th>
-							<th>Remove</th>
-						</tr>
-					</thead>
-					<tr class="rem1">
-						<td class="invert">1</td>
-						<td class="invert-image"><a href="single.html"><img src="images/1.png" alt=" " class="img-responsive" /></a></td>
 						<td class="invert">
-							 <div class="quantity"> 
+							<div class="quantity"> 
 								<div class="quantity-select">                           
-									<div class="entry value-minus">&nbsp;</div>
-									<div class="entry value"><span>1</span></div>
-									<div class="entry value-plus active">&nbsp;</div>
+									{% comment %} Reduce the quantity of the product in the cart {% endcomment %}
+									<a href="{% url 'reduce_quantity_product_in_cart-URL' orderdetails_id=line.id %}"  class="btn btn-info btn-sm">-</a>
+									{% comment %} {{line.OrderDetails_quantity}} {% endcomment %}
+									<div class="entry value"><span>{{line.OrderDetails_quantity}}</span></div>
+									{% comment %} Increase the quantity of the product in the cart {% endcomment %}
+									<a href="{% url 'increase_quantity_product_in_cart-URL' orderdetails_id=line.id %}"  class="btn btn-info btn-sm">+</a>
 								</div>
 							</div>
 						</td>
-						<td class="invert">Tata Salt</td>
-						
-						<td class="invert">$290.00</td>
-						<td class="invert">
-							<div class="rem">
-								<div class="close1"> </div>
-							</div>
-							<script>$(document).ready(function(c) {
-								$('.close1').on('click', function(c){
-									$('.rem1').fadeOut('slow', function(c){
-										$('.rem1').remove();
-									});
-									});	  
-								});
-						   </script>
-						</td>
-					</tr>
-					<tr class="rem2">
-						<td class="invert">2</td>
-						<td class="invert-image"><a href="single.html"><img src="images/2.png" alt=" " class="img-responsive" /></a></td>
-						<td class="invert">
-							 <div class="quantity"> 
-								<div class="quantity-select">                           
-									<div class="entry value-minus">&nbsp;</div>
-									<div class="entry value"><span>1</span></div>
-									<div class="entry value-plus active">&nbsp;</div>
-								</div>
-							</div>
-						</td>
-						<td class="invert">Fortune oil</td>
-					
-						<td class="invert">$250.00</td>
-						<td class="invert">
-							<div class="rem">
-								<div class="close2"> </div>
-							</div>
-							<script>$(document).ready(function(c) {
-								$('.close2').on('click', function(c){
-									$('.rem2').fadeOut('slow', function(c){
-										$('.rem2').remove();
-									});
-									});	  
-								});
-						   </script>
-						</td>
-					</tr>
-					<tr class="rem3">
-						<td class="invert">3</td>
-						<td class="invert-image"><a href="single.html"><img src="images/3.png" alt=" " class="img-responsive" /></a></td>
-						<td class="invert">
-							 <div class="quantity"> 
-								<div class="quantity-select">                           
-									<div class="entry value-minus">&nbsp;</div>
-									<div class="entry value"><span>1</span></div>
-									<div class="entry value-plus active">&nbsp;</div>
-								</div>
-							</div>
-						</td>
-						<td class="invert">Aashirvaad atta</td>
-						
-						<td class="invert">$15.00</td>
-						<td class="invert">
-							<div class="rem">
-								<div class="close3"> </div>
-							</div>
-							<script>$(document).ready(function(c) {
-								$('.close3').on('click', function(c){
-									$('.rem3').fadeOut('slow', function(c){
-										$('.rem3').remove();
-									});
-									});	  
-								});
-						   </script>
-						</td>
-					</tr>
-								<!--quantity-->
-									<script>
-									$('.value-plus').on('click', function(){
-										var divUpd = $(this).parent().find('.value'), newVal = parseInt(divUpd.text(), 10)+1;
-										divUpd.text(newVal);
-									});
 
-									$('.value-minus').on('click', function(){
-										var divUpd = $(this).parent().find('.value'), newVal = parseInt(divUpd.text(), 10)-1;
-										if(newVal>=1) divUpd.text(newVal);
-									});
-									</script>
-								<!--quantity-->
-				</table>
+						{% comment %} Product Price {% endcomment %}
+						<td class="invert">{{line.OrderDetails_price}}</td>
+
+						{% comment %} Product Subtotal {% endcomment %}
+						{% comment %} {% widthratio line.OrderDetails_quantity 1 line.OrderDetails_price %} - هنا إجراء عملية الضرب
+						{% widthratio line.OrderDetails_quantity 2 line.OrderDetails_price %} - هنا إجراء عملية القسمة {% endcomment %}
+						<td class="invert">{% widthratio line.OrderDetails_quantity 1 line.OrderDetails_price %}</td>
+
+						{% comment %} Delete the product {% endcomment %}
+						<td> <a href="{% url 'remove_from_cart-URL' orderdetails_id=line.id %}" class="btn btn-danger btn-sm">X</a> </td>
+				</tr>
+
+{% empty %}
+		<h5 class="alert alert-info"> No Order Details Here </h5>
+{% endfor %}
+
+			</table>
+				
 			</div>
 			<div class="checkout-left">	
+				<div class="checkout-right-basket">
+					<a href="#"><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span> Checkout</a>
+				<hr>
+				</div>
+
 				<div class="checkout-left-basket">
-					<h4>Continue to basket</h4>
+					<h4> Checkout </h4>
 					<ul>
-						<li>Product1 <i>-</i> <span>$15.00 </span></li>
-						<li>Product2 <i>-</i> <span>$25.00 </span></li>
-						<li>Product3 <i>-</i> <span>$29.00 </span></li>
-						<li>Total Service Charges <i>-</i> <span>$15.00</span></li>
-						<li>Total <i>-</i> <span>$84.00</span></li>
+						<li>Order Number <i>-</i> <span>( {{ order_VAR.id }} )</span></li>
+						<li>Number Of Products <i>-</i> <span>( {{OrderDetails_VAR.count}} )</span></li>
+						<li>Total <i>-</i> <span>SR ( {{ total_VAR}} )</span></li>
+						{% comment %} <li> Tax (15% ) <i>-</i> <span>SR ( 00 )</span></li> {% endcomment %}
+						{% comment %} <li>Total Service Charges <i>-</i> <span>SR ( 15.00 )</span></li> {% endcomment %}
 					</ul>
 				</div>
 				<div class="checkout-right-basket">
-					<a href="single.html"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>Continue Shopping</a>
+					<a href="{% url 'dashboard-URL' %}"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>Continue Shopping</a>
+				<hr>
 				</div>
 				<div class="clearfix"> </div>
 			</div>
 		</div>
 	</div>
-{% endcomment %}
 
-    {% else%}
 
-<h5 class="alert alert-warning">
-
-    No Orders Here
-</h5>
+{% else%}
+	<h5 class="alert alert-info"> No Orders Here </h5>
 {% endif %}
-
-<hr>
-{% comment %} </div> {% endcomment %}
-
 
 {% endblock CONTENTS_PAGE %} 
 
@@ -241,3 +135,4 @@ line.OrderDetails_product.product_image:
 <!---  PAGINATION --------------------------- -->
 {% block    PAGINATION %} 
 {% endblock PAGINATION %} 
+

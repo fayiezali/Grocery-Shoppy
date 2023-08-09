@@ -7,10 +7,10 @@ urlpatterns = [
     # Show cart contents
     path('cart'                                                       , views.cart_DEF                               , name='cart-URL'),
     # Remove the product from the cart
-    path('remove_from_cart<int:orderdetails_id>'                      , views.remove_from_cart_DEF                    , name='remove_from_cart-URL'),
+    path('remove_from_cart/<int:orderdetails_id>'                      , views.remove_from_cart_DEF                    , name='remove_from_cart-URL'),
     # Increase the quantity of the product in the cart
     path('increase_quantity_product_in_cart/<int:orderdetails_id>'    , views.increase_quantity_product_in_cart_DEF   , name='increase_quantity_product_in_cart-URL'),
     # Reduce the quantity of the product in the cart
     path('reduce_quantity_product_in_cart/<int:orderdetails_id>'      , views.reduce_quantity_product_in_cart_DEF     , name='reduce_quantity_product_in_cart-URL'),
 
-] 
+]  

@@ -1,12 +1,10 @@
 {% load static %}
 
 
-<h1> User Is Authenticated <h1>
-
 <body>
 	<!-- top-header -->
 	<div class="header-most-top">
-		<p>Grocery Offer Zone Top Deals & Discounts</p>
+		<p> </p>
 	</div>
 	<!-- //top-header -->
 	<!-- header-bot-->
@@ -44,22 +42,20 @@
 							<span class="fa fa-unlock-alt" aria-hidden="true"></span> Change Password </a>
 					</li> 
 
-					<li>
+					{% comment %} <li>
 						<a href="{% url 'cart-URL' %}">
-						{% comment %} <a href="{% url 'cart-URL' %}" data-toggle="modal" data-target="#myModal2"> {% endcomment %}
-
 							<span class="fa fa-pencil-square-o" aria-hidden="true"></span> Chart </a>
-					</li> 
+					</li>  {% endcomment %}
 
-					<li>
-						{% comment %} <a href="{% url 'product_view'  %}"> {% endcomment %}
-							<span class="fa fa-pencil-square-o" aria-hidden="true"></span> Product Details </a>
-					</li> 	
+					{% comment %} <li>
+						<a href="{% url 'product_view'  %}">
+							<span class="fa fa-pencil-square-o" aria-hidden="true"></span> .... </a>
+					</li> 	 {% endcomment %}
 
-					<li>
+					{% comment %} <li>
 						<a href="#">
-							<span class="fa fa-pencil-square-o" aria-hidden="true"></span> Product All </a>
-					</li> 	
+							<span class="fa fa-pencil-square-o" aria-hidden="true"></span> ..... </a>
+					</li> 	 {% endcomment %}
 
 					<li>
 						{% comment %} class="nav-item"> {% endcomment %}
@@ -82,9 +78,7 @@
 				<!-- cart details -->
 				<div class="top_nav_right">
 					<div class="wthreecartaits wthreecartaits2 cart cart box_1">
-						<form action="#" method="post" class="last">
-							<input type="hidden" name="cmd" value="_cart">
-							<input type="hidden" name="display" value="1">
+						<form action="{% url 'cart-URL' %}"  >
 							<button class="w3view-cart" type="submit" name="submit" value="">
 								<i class="fa fa-cart-arrow-down" aria-hidden="true"></i>
 							</button>
