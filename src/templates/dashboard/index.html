@@ -29,15 +29,18 @@
 			<li data-target="#myCarousel" data-slide-to="3" class=""></li>
 		</ol>
 		<div class="carousel-inner" role="listbox">
+{% comment %} ================================================================================== {% endcomment %}
 			<!-- product left -->
 			<div class="side-bar col-md-3">
 				<div class="search-hotel">
 					<h3 class="agileits-sear-head">Search Here..</h3>
-					<form action="#" method="post">
-						<input type="search" placeholder="Product name..." name="search" required="">
-						<input type="submit" value=" ">
+					<form action="{% url 'search_product-URL' %}" method="post" novalidate>
+                        {% csrf_token %}
+						<input type="search" placeholder="Product name..." name="search" >
+						<input type="submit" >
 					</form>
 				</div>
+{% comment %} ===================================================================================== {% endcomment %}
 				<!-- price range -->
 				<div class="range">
 					<h3 class="agileits-sear-head">Price range</h3>

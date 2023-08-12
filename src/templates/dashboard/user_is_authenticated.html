@@ -65,16 +65,19 @@
 
 				</ul>
 				<!-- //header lists -->
+{% comment %} ================================================================================== {% endcomment %}
 				<!-- search -->
 				<div class="agileits_search">
-					<form action="#" method="post">
-						<input name="Search" type="search" placeholder="How can we help you today?" required="">
+					<form action="{% url 'search_product-URL' %}" method="post">
+						{% csrf_token %}
+						<input name="search" type="search" placeholder="How can we help you today?">
 						<button type="submit" class="btn btn-default" aria-label="Left Align">
 							<span class="fa fa-search" aria-hidden="true"> </span>
 						</button>
 					</form>
 				</div>
 				<!-- //search -->
+{% comment %} ================================================================================== {% endcomment %}
 				<!-- cart details -->
 				<div class="top_nav_right">
 					<div class="wthreecartaits wthreecartaits2 cart cart box_1">
