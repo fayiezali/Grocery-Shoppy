@@ -4,7 +4,7 @@
 
 <!---  PAGE_TITLE  ----------------------------- -->
 {% block    PAGE_TITLE  %} 
-	<h2 class="text-center"> Search  </h2>
+	<h2 class="text-center"> Search Result  </h2>
 {% endblock PAGE_TITLE  %}  
 
 
@@ -36,8 +36,8 @@
 					<h3 class="agileits-sear-head">Search Here..</h3>
 					<form action="{% url 'search_product-URL' %}" method="post" novalidate>
                         {% csrf_token %}
-						<input type="search" placeholder="Product name..." name="search" >
-						<input type="submit" >
+						<input type="search" placeholder="Search Product" name="search" >
+						<input type="submit">
 					</form>
 				</div>
 {% comment %} ===================================================================================== {% endcomment %}
@@ -280,44 +280,40 @@
 			
 			{% for products_all_itme_VAR in products_search_VAR %}
 
-				<div class="col-lg-4 my-4">
-					<div class="card shadow align-items-center" style="width: 13rem; height: 25rem;">
-						{% comment %} (1)View Image product  {% endcomment %}
-						<img class="profile_img" src=" {{ products_all_itme_VAR.product_image.url }}" alt="" width="150" height="150">
-								<div class="men-cart-pro">
-									{% comment %} <div class="inner-men-cart-pro"> {% endcomment %}
-										{% comment %} (2)View product details {% endcomment %}
-										<a href="single.html" class="link-product-add-cart">Quick View</a>
-									{% comment %} </div> {% endcomment %}
-								</div>
-									<div class="card-body"> 
-								{% comment %} (4)Product Name  & Link Product Details{% endcomment %}
-								<a href="single.html"> {{products_all_itme_VAR.product_name }}</a>
-							<hr>
-								{% comment %} (4)Product Name  & Link Product Details{% endcomment %}
-								<a href="single.html">{{ products_all_itme_VAR.product_name.id }}</a>
-	
 
-								<a href="/product_view/product.id/" class="btn btn-outline-secondary">View</a>
-								
-							  {% comment %} (5)The price after discount {% endcomment %}
-							<div class="info-product-price">
-								{% comment %} (5)The price after discount {% endcomment %}
-								<span class="item_price"> {{products_all_itme_VAR.product_price }}</span> 
-								{% comment %} (6)Price before discount {% endcomment %}
-								<del>$110.00</del> 
-							</div>
-								<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
-				
-								<form action="{% url 'add_to_cart-URL' %}" method="GET">
-								{% comment %} <form action="#" method="post"> {% endcomment %}
-									<fieldset> 
-										<input type="hidden" name="pro_id" value="{{ products_all_itme_VAR.id }}">
-										<input type="text"   name="qty" lass="form-control" id ="inputqty"  value="1" >
-										<input type="submit" name="submit"  class="button" />
-									</fieldset>
-								</form>
-				
+			<div class="col-lg-4 my-4">
+				<div class="card shadow align-items-center" style="width: 13rem; height: 25rem;">
+
+					{% comment %} (1)View Image product  {% endcomment %}
+					<img class="profile_img" src=" {{ products_all_itme_VAR.product_image.url }}" alt="" width="150" height="150">
+							<div class="card-body"> 
+
+					{% comment %} (2)Product Name  & Link Product Details{% endcomment %}
+							<a> {{products_all_itme_VAR.product_name }}</a>  <hr>
+			
+
+					{% comment %} (3)View product details {% endcomment %}
+							<a href="{% url 'product_detail-URL' products_all_itme_VAR.id %}">Quick View</a>
+							
+						<div class="info-product-price">
+
+					{% comment %} (4)The price after discount {% endcomment %}
+							<span class="item_price"> {{products_all_itme_VAR.product_price }}</span> 
+
+					{% comment %} (5)Price before discount {% endcomment %}
+							<del>$110.00</del> 
+						</div>
+							<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
+
+					{% comment %} Form Action {% endcomment %}
+							<form action="{% url 'add_to_cart-URL' %}" method="GET">
+								<fieldset> 
+									<input type="hidden" name="pro_id" value="{{ products_all_itme_VAR.id }}">
+									<input type="hidden"   name="qty" lass="form-control" id ="inputqty"  value="1" >
+									<input type="submit" name="submit"  value="Add To Cart" class="button" />
+								</fieldset>
+							</form>
+
 </div>
 </div>
 </div>

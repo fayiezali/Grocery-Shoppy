@@ -14,3 +14,5 @@ def search_product_DEF(request):
             return render(request, "search/search.html", {'products_search_VAR':products_search_VAR})
     else:
         return render(request, "search/search.html")
+
+

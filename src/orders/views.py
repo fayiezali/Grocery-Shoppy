@@ -184,6 +184,23 @@ def reduce_quantity_product_in_cart_DEF(request , orderdetails_id):
                     orderdetails_VAR.OrderDetails_quantity -= 1  # Reduce the quantity of the product in the cart
                     orderdetails_VAR.save() #s save The quantity
     return redirect("cart-URL") # Go To Cart Page
+#
+#
+#
+
+def product_details_DEF(request, product_id):
+        products_details_VAR = ProductMODEL.objects.all().filter(id=product_id)
+        return render(request, "orders/product_details.html", {'products_details_VAR':products_details_VAR})
 
 
+
+
+def product_view(request, myid):
+    product = ProductMODEL.objects.filter(id=myid).first()
+
+    if request.method=="POST":
+
+        return redirect('product_view')
+        # return redirect(f"/product_view/{product.id}")
+    return render(request, "orders/product_view.html", {'product':product})
 

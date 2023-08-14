@@ -65,7 +65,7 @@
 				<div class="agileits_search">
 					<form action="{% url 'search_product-URL' %}" method="post">
 						{% csrf_token %}
-						<input name="search" type="search" placeholder="How can we help you today?">
+						<input name="search" type="search" placeholder="Search Product">
 						<button type="submit" class="btn btn-default" aria-label="Left Align">
 							<span class="fa fa-search" aria-hidden="true"> </span>
 						</button>
@@ -591,7 +591,7 @@
 						<div class="collapse navbar-collapse menu--shylock" id="bs-example-navbar-collapse-1">
 							<ul class="nav navbar-nav menu__list">
 								<li class="active">
-									<a class="nav-stylehead" href="index.html">Home
+									<a class="nav-stylehead" href="{% url 'dashboard-URL' %}">Home
 										<span class="sr-only">(current)</span>
 									</a>
 								</li>
