@@ -29,6 +29,7 @@ urlpatterns = [
     path('', include('password_change.urls')), 
     path('', include('password_reset.urls')), 
     path('', include('search.urls')), 
+    path('', include('checkout.urls')),
     path('', include('orders.urls')),  
     # path('', include('shop.urls')),
 
