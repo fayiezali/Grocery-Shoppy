@@ -14,7 +14,7 @@ class CheckoutDetail_MODEL(models.Model):
     state = models.CharField(max_length=100)
     zipcode = models.CharField(max_length=100)
     payment = models.CharField(max_length=100, blank=True)
-    date_added = models.DateTimeField(default=now)
+    date_added = models.DateTimeField(default=now())
 
     def __str__(self):
         return self.address
