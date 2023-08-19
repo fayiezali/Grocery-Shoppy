@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'orders',
     'search',
     'checkout',
+    'track_shipment',
 ]
 
 MIDDLEWARE = [

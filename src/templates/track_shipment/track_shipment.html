@@ -1,0 +1,149 @@
+{% extends "dashboard/base.html" %}  
+{% load static %}
+
+
+<!---  PAGE_TITLE  ----------------------------- -->
+{% block    PAGE_TITLE  %} 
+<h2 class="text-center"> Track shipment  </h2>
+{% endblock PAGE_TITLE  %}  
+
+
+<!---  MESSAGES_CONTENTS  ---------------------- -->
+{% block    MESSAGES_CONTENTS  %}
+
+  <!---  Show The Alert Message  ----------------------------- -->
+	{% include 'aler_messages/alert_message.html'%}
+
+{% endblock MESSAGES_CONTENTS  %}  
+
+
+
+<!---  CONTENTS_PAGE --------------------------- -->
+{% block    CONTENTS_PAGE %} 
+
+<h2> Order Tracking <h2>
+  {% for shipment_track_item in shipment_track_VAR %}
+
+User Name: {{shipment_track_item.shipment_track_user}}                                     <hr>           
+Order No.: {{shipment_track_item.shipment_track_order_id}}                                 <hr>     
+Step 1 - Confirmed Order: {{shipment_track_item.shipment_track_confirmed_Order}}           <hr>
+Step 2 - Confirmed Order Date: {{shipment_track_item.shipment_track_confirmed_Order_date}} <hr>
+Step 2 - Track Shiped: {{shipment_track_item.shipment_track_shipped}}                      <hr>     
+Step 3 - Track On The Way:{{shipment_track_item.shipment_track_on_the_way}}                <hr>   
+Step 4 - Delivered: {{shipment_track_item.shipment_track_delivered}}                       <hr>    
+{% endfor %}
+{% comment %} ===================================== {% endcomment %}
+<div class="container py-5">
+    <div class="col">
+        <h2>Enter your Order Id to track your order.</h2>
+        <form enctype="multipart/form-data"  method="post" novalidate>
+            {% csrf_token %}
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                    <input type="number" class="form-control mt-3" name="order_id" placeholder="Order Id">
+                </div>  
+                <button type="submit" class="btn btn-primary mt-4">Track Order</button>
+            </div>
+    </div>
+    <div class="col my-4">
+        <h4>Order Items:</h4>
+        <div class="my-4">
+            {% for i in order_items %}
+            <ol class="list-group">
+                <li class="list-group-item d-flex justify-content-between ">
+                  <div class="ms-2 me-auto">
+                    <div class="fw-bold">{{forloop.counter}}. {{i.product}}</div>
+                  </div>
+                  <span class="badge bg-primary rounded-pill">Qty: {{i.quantity}}</span>
+                </li>
+              </ol>
+            {% endfor %}
+
+        </div>
+        <h4>Your Order Details:</h4>
+        <div class="my-4">
+            {% for i in update_order %}
+            <ol class="list-group">
+                <li class="list-group-item d-flex justify-content-between ">
+                  <div class="ms-2 me-auto">
+                    <div class="fw-bold">{{i.desc}}</div>
+                  </div>
+                  <span class="badge bg-primary rounded-pill">Date: {{i.date}}</span>
+                </li>
+              </ol>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% comment %} ------------------------------------------------------- {% endcomment %}
+<h4>
+  <hr>
+  <img src="{% static 'images/01_Confirm_Order.png' %}"    style="width: 50px; height: 50px;">   Step 1 - &#x2705; Confirmed Order 
+  <hr>
+  <img src="{% static 'images/02_Processing_Order.png' %}" style="width: 50px; height: 50px;" >   Step 2 - &#x2705; Processing Order 
+  <hr>
+  <img src="{% static 'images/03_Dispatch_Product.png' %}" style="width: 50px; height: 50px;">    Step 3 - &#x2705; Dispatch Product
+  <hr>
+  <img src="{% static 'images/04_Delivery.png' %}"          style="width: 50px; height: 50px;">   Step 4 - &#x2705; Delivery       
+  <hr>
+  <img src="{% static 'images/05_Product_Delivered.png' %}" style="width: 50px; height: 50px;">   Step 5 - &#x2705; Product Delivered 
+  <hr>
+<h4>
+<hr>
+
+
+<div id="loginbox" style="margin-top:5px;">                    
+<div class="panel panel-info" >
+<div class="panel-heading">
+{% comment %} <div class="content3"> {% endcomment %}
+{% comment %} <div class="shipment"> {% endcomment %}
+
+		<div class="confirm">
+      <div class="imgcircle">
+      <img src="{% static 'images/01_Confirm_Order.png' %}" style="width: 50px; height: 50px;">  Step 1 - &#x2705; Confirmed Order 
+      </div>
+		</div>
+
+		<div class="process">
+      <div class="imgcircle">
+      <img src="{% static 'images/02_Processing_Order.png' %}" style="width: 50px; height: 50px;" >   Step 2 - &#x2705; Processing Order 
+      </div>
+		</div>
+
+		<div class="quality">
+			<div class="imgcircle">
+      <img src="{% static 'images/03_Dispatch_Product.png' %}" style="width: 50px; height: 50px;">   Step 3 - &#x2705; Dispatch Product
+      </div>
+		</div>
+
+		<div class="dispatch">
+			<div class="imgcircle">
+      <img src="{% static 'images/04_Delivery.png' %}" style="width: 50px; height: 50px;">   Step 4 - &#x2705; Delivery         
+      </div>
+    </div>
+
+		<div class="delivery">
+			<div class="imgcircle">
+      <img src="{% static 'images/05_Product_Delivered.png' %}" style="width: 50px; height: 50px;">   Step 5 - &#x2705; Product Delivered 
+		  </div>
+		</div>
+
+
+{% comment %} </div> {% endcomment %}
+{% comment %} </div> {% endcomment %}
+</div>
+</div> 
+</div> 
+
+{% comment %} ========================================================== {% endcomment %}
+
+
+
+
+{% endblock CONTENTS_PAGE %} 
+
+
+
+<!---  PAGINATION --------------------------- -->
+{% block    PAGINATION %} 
+{% endblock PAGINATION %} 

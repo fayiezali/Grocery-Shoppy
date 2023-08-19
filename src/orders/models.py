@@ -1,6 +1,8 @@
 from django.db import models
 from .models import *
 from django.contrib.auth.models import User # إستيراد اسم المستخدم
+from django.utils.timezone import now
+
 
 # Model Proudect
 class ProductMODEL(models.Model):
@@ -55,3 +57,13 @@ class OrderDetailsMODEL(models.Model):
         return  'User Name : ' + str(self.OrderDetails_order.order_user) + ' - ' +\
                 'Product: ' + self.OrderDetails_product.product_name + ' - ' +\
                 'Order Id: ' + str(self.OrderDetails_order.id)
+#
+#
+#
+class UpdateOrder_MODEL(models.Model):
+    order_id = models.ForeignKey(OrderMODEL, on_delete=models.CASCADE)
+    desc = models.CharField(max_length=500)
+    date = models.DateField(default=now())
+
+    def __str__(self):
+        return str(self.order_id)
