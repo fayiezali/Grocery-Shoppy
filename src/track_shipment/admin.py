@@ -4,5 +4,4 @@ from . models import *
 #
 #
 # 
-admin.site.register(UpdateOrder_MODEL)
 admin.site.register(ShipmentTrackMODEL)

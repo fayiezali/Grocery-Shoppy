@@ -9,12 +9,16 @@ class CheckoutDetail_MODEL(models.Model):
     order = models.ForeignKey(OrderMODEL, on_delete=models.SET_NULL, null=True)
     phone_number = models.CharField(max_length=10, blank=True, null=True)
     total_amount = models.CharField(max_length=10, blank=True,null=True)
-    address = models.CharField(max_length=300)
-    city = models.CharField(max_length=100)
-    state = models.CharField(max_length=100)
-    zipcode = models.CharField(max_length=100)
-    payment = models.CharField(max_length=100, blank=True)
+    address = models.CharField(max_length=300, blank=True, null=True)
+    city = models.CharField(max_length=100, blank=True, null=True)
+    state = models.CharField(max_length=100, blank=True, null=True)
+    zipcode = models.CharField(max_length=100, blank=True, null=True)
+    payment = models.CharField(max_length=100, blank=True, null=True)
     date_added = models.DateTimeField(default=now())
 
+    # 'admin'display the field name on a page
+    # \: write code of more than 1 line in the Python interpreter
     def __str__(self):
-        return self.address
+        return  'phone_number: ' + str(self.phone_number) + '-' \
+                'User Name: ' + str(self.user) + '-' \
+                'Order Id: ' + str(self.order.id) 
