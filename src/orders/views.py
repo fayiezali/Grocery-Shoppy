@@ -189,7 +189,8 @@ def reduce_quantity_product_in_cart_DEF(request , orderdetails_id):
 #
 
 def product_details_DEF(request, product_id):
-        products_details_VAR = ProductMODEL.objects.all().filter(id=product_id)
+        products_details_VAR = ProductMODEL.objects.get(id=product_id)
+        print(products_details_VAR)
         return render(request, "orders/product_details.html", {'products_details_VAR':products_details_VAR})
 
 

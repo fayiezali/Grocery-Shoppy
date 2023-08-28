@@ -96,7 +96,6 @@ def checkout_DEF(request):
 
     messages.success(request    , "Checkout successfully.")
     return render(request,'dashboard/index.html', context)
-    # return render(request, "checkout/checkout.html", context)
 
 
 
